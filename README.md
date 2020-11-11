@@ -29,4 +29,4 @@ Cuando el médico inicie sesión podrá gestionar sus datos y accede a los sigui
   2. Reporte zodiacal, aparecerá un listado de todos los pacientes cedula, nombre, apellido y signo zodiacal.
   3. Reporte de pacientes con cantidad de visitas, aparecerá un listado con todos los pacientes registrados y al lado la cantidad de consultas que ha hecho ese paciente.
 
-Debe realizar una aplicación web (Angular) y una aplicación móvil en APK. Puedes usar IONIC o la plataforma que prefieras.  Ambas deben consumir la misma api. De tal manera de que si me registro usando la web, puedo iniciar sesión en el móvil y lo inverso. 
+Debe realizar una aplicación web (Angular) y una aplicación móvil en APK. Puedes usar IONIC o la plataforma que prefieras.  Ambas deben consumir la misma api. De tal manera de que si me registro usando la web; puedo iniciar sesión en el móvil y lo inverso. 
