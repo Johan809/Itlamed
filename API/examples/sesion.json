@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "med": {
+    "__data__": {
+      "_id": 2,
+      "name": "Juan Rosario",
+      "email": "JuanR02@gmail.com",
+      "password": "algo"
+    },
+    "_dirty": [],
+    "__rel__": {}
+  },
+  "token": "59f4e094946348deaa9c7fa4991e49f5"
+}
