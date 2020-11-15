@@ -201,6 +201,8 @@ def delete_patient(token: str, _id: int):
         act_med = Doctor.get(Doctor._id == act_ses.user._id)
         p = Patient.select().join(Doctor).where(
             (Doctor._id == act_med._id) & (Patient._id == _id)).get()
+        query = Consultation.delete().where(Consultation.patient == p)
+        query.execute()
         p.delete_instance()
         return serverAnswer(True, 'Paciente eliminado con exito')
     except:

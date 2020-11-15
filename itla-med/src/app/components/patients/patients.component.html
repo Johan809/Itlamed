@@ -1,0 +1,47 @@
+<div class="contenedor">
+  <button class="btn btn-primary" routerLink="/create">Agregar Nuevo</button>
+</div>
+<div class="row">
+  <div *ngFor="let p of patients">
+    <div class="col-md-4">
+      <div class="card card-margin" style="width: 18rem">
+        <div class="card-body">
+          <div class="img">
+            <img class="img-fluid rounded-circle" [src]="p.photo" />
+          </div>
+          <h5 class="card-title">{{ p.name }} {{ p.lastn }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Fecha Nac: {{ p.bdate }}
+          </h6>
+          <p class="card-text">
+            <strong>Cédula:</strong> {{ p.id_card }} <br />
+            <strong>Email:</strong> {{ p.email }} <br />
+          </p>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              [routerLink]="['/patients', p.id]"
+              type="button"
+              class="btn btn-info"
+            >
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button
+              [routerLink]="['/editPatient', p.id]"
+              type="button"
+              class="btn btn-success"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              (click)="delPat(p.id)"
+              type="button"
+              class="btn text-white btn-danger"
+            >
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
