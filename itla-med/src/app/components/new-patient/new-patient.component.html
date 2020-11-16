@@ -1,0 +1,221 @@
+<div class="card bg-light" style="margin-bottom: 2%">
+  <article class="card-body mx-auto" style="max-width: 400px">
+    <h4 class="card-title mt-3 text-center">Agregar Paciente</h4>
+    <!-- validation msgs -->
+    <div id="error" class="alert alert-danger ocultar" role="alert">
+      {{ msg }}
+    </div>
+    <!-- end of v.msgs -->
+    <div>
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="far fa-id-card"></i> </span>
+        </div>
+        <input #cedula class="form-control" placeholder="Cedula" type="text" />
+      </div>
+
+      <!--photo?-->
+      <div class="form-group input-group">
+        <div class="input-group">
+          <div class="custom-file">
+            <input
+              #photoInput
+              type="file"
+              class="custom-file-input"
+              id="photoInput"
+              aria-describedby="inputGroupFileAddon04"
+            />
+            <label class="custom-file-label" for="photoInput">
+              <i class="far fa-image"></i> Foto Paciente
+            </label>
+          </div>
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              data-toggle="modal"
+              data-target="#photoModal"
+              type="button"
+              id="inputGroupFileAddon04"
+            >
+              Tomar Foto
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input #name class="form-control" placeholder="Nombre" type="text" />
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input #lastn class="form-control" placeholder="Apellido" type="text" />
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-syringe"></i>
+          </span>
+        </div>
+        <select #blood class="custom-select">
+          <option value="" selected>Tipo Sangre</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input
+          #email
+          class="form-control"
+          placeholder="Correo Electronico"
+          type="email"
+        />
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-venus-mars"></i>
+          </span>
+        </div>
+        <select #gender class="custom-select">
+          <option value="" selected>Genero</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+          <option value="Other">Queer</option>
+        </select>
+      </div>
+
+      <!-- form-group end.// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"
+            ><i class="far fa-calendar-alt"></i
+          ></span>
+        </div>
+        <input
+          #date
+          class="form-control"
+          placeholder="Fecha Nacimiento"
+          type="date"
+        />
+      </div>
+
+      <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-comment-medical"></i>
+          </span>
+        </div>
+        <textarea
+          #allergies
+          class="form-control"
+          placeholder="Alergias"
+          type="text"
+        ></textarea>
+      </div>
+      <!-- form-group// -->
+      <div class="form-group">
+        <button
+          (click)="
+            create(
+              cedula.value,
+              photoInput,
+              name.value,
+              lastn.value,
+              blood.value,
+              email.value,
+              gender.value,
+              date.value,
+              allergies.value
+            )
+          "
+          class="btn btn-primary btn-block"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </article>
+</div>
+<!-- card.// -->
+<div
+  class="modal fade"
+  id="photoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Tomar foto por webcam
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column align-items-center">
+          <div class="p-1">
+            <video
+              #video
+              id="video"
+              class="vid"
+              autoplay
+              style="width: 350px; height: 350px"
+            ></video>
+          </div>
+          <div class="pb-2"></div>
+          <div class="p-1">
+            <canvas
+              id="canvas"
+              #canvas
+              class="vid"
+              style="width: 350px; height: 350px"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="startCamera()">
+          Iniciar webcam
+        </button>
+        <button class="btn btn-success" (click)="capture()">Tomar foto</button>
+        <button
+          (click)="stopCamera()"
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Listo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

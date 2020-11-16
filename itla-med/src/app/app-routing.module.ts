@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { Error404Component } from './components/error404/error404.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { NewPatientComponent } from './components/new-patient/new-patient.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'patients',
     component: PatientsComponent,
+  },
+  {
+    path: 'newPatient',
+    component: NewPatientComponent,
   },
   {
     path: '**',
