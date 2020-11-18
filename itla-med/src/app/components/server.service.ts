@@ -11,6 +11,8 @@ export class ServerService {
     this.apiUrl = 'http://127.0.0.1:8000/';
   }
 
+  
+
   public async register(med: object): Promise<string> {
     let url = this.apiUrl + 'regMed';
     let xhttp = this.xhttp;

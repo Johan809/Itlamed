@@ -2,22 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
-                <div class="card-register">
+                <div class="card_register">
                     <div class="card">
-                        <div class="group-body text-center">
-                            <form action="">
+                        <div class="card-body text-center">
+                            <form #formRegister="ngForm">
                                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                                 <div class="form-group">
-                                    <input type="text" id="nombre" name="nombre" placeholder="Name" class="form-control" required>
+                                    <input type="text" id="nombre" [(ngModel)]="user.name" name="nombre" placeholder="Nombre" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Correo" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+                                    <input type="password" id="password" [(ngModel)]="user.password" name="password" placeholder="Contraseña" class="form-control" required>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
-                                <a href="">Do you have account?</a>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block" routerLink="/login">Register</button>
+                                <div class="form-group">
+                                    <a routerLink="/login">Tienes una cuenta?</a>
+                                </div>
                             </form>
                         </div>
                     </div>
