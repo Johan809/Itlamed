@@ -5,7 +5,7 @@
                 <div class="card_register">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form #formRegister="ngForm">
+                            <form>
                                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                                 <div class="form-group">
                                     <input type="text" id="nombre" [(ngModel)]="user.name" name="nombre" placeholder="Nombre" class="form-control" required>
@@ -16,7 +16,8 @@
                                 <div class="form-group">
                                     <input type="password" id="password" [(ngModel)]="user.password" name="password" placeholder="Contraseña" class="form-control" required>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block" routerLink="/login">Register</button>
+                                <button type="submit" (click)="registrar(user.name,user.email,user.password)" class="btn btn-lg btn-primary btn-block">Register</button>
+                                <br>
                                 <div class="form-group">
                                     <a routerLink="/login">Tienes una cuenta?</a>
                                 </div>
