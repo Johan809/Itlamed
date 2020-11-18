@@ -1,0 +1,74 @@
+<h2 class="text-center">Reporte de Pacientes por fecha</h2>
+<hr />
+<br />
+
+<div class="form-inline" style="margin-bottom: 3%">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+    </div>
+    <input #_date class="form-control" placeholder="Fecha" type="date" />
+  </div>
+  <button
+    (click)="giveReport(_date.value)"
+    class="btn btn-info my-1"
+    style="margin-left: 1%"
+  >
+    Buscar
+  </button>
+</div>
+
+<!-- table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    {{ msg }}
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"> </span>
+      <table
+        class="table table-bordered table-responsive-md table-striped text-center"
+      >
+        <tr>
+          <th class="text-center">Paciente</th>
+          <th class="text-center">No. Seguro</th>
+          <th class="text-center">Motivo</th>
+          <th class="text-center">Diagnostico</th>
+          <th class="text-center">Accion</th>
+        </tr>
+        <tr *ngFor="let p of report">
+          <td>
+            <span> {{ p.name }} {{ p.lastname }} </span>
+          </td>
+          <td>
+            <span>
+              {{ p.n_ins }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.motive }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.diag }}
+            </span>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                [routerLink]="['/patients', p.id]"
+                type="button"
+                class="btn btn-info"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- table -->

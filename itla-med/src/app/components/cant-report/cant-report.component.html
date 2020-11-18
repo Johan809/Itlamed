@@ -1,0 +1,68 @@
+<h2 class="text-center">Reporte de Pacientes por cantidad de visitas</h2>
+<hr />
+<br />
+
+<!-- table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    {{ msg }}
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"> </span>
+      <table
+        class="table table-bordered table-responsive-md table-striped text-center"
+      >
+        <tr>
+          <th class="text-center">Cedula</th>
+          <th class="text-center">Nombre Completo</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Genero</th>
+          <th class="text-center">T. Sangre</th>
+          <th class="text-center">Cantidad</th>
+          <th class="text-center">Accion</th>
+        </tr>
+        <tr *ngFor="let p of report">
+          <td>
+            <span> {{ p.id_card }} </span>
+          </td>
+          <td>
+            <span> {{ p.name }} {{ p.lastn }} </span>
+          </td>
+          <td>
+            <span>
+              {{ p.email }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.gender }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.blood }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.n_cons }}
+            </span>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                [routerLink]="['/patients', p.id]"
+                type="button"
+                class="btn btn-info"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- table -->

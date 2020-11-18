@@ -1,0 +1,58 @@
+<h2 class="text-center">Reporte de Pacientes por signo Zodiacal</h2>
+<hr />
+<br />
+
+<!-- table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+    {{ msg }}
+  </h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"> </span>
+      <table
+        class="table table-bordered table-responsive-md table-striped text-center"
+      >
+        <tr>
+          <th class="text-center">Cedula</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Apellido</th>
+          <th class="text-center">S. Zodiacal</th>
+          <th class="text-center">Accion</th>
+        </tr>
+        <tr *ngFor="let p of report">
+          <td>
+            <span> {{ p.id_card }} </span>
+          </td>
+          <td>
+            <span>
+              {{ p.name }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.lastn }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ p.zoc }}
+            </span>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                [routerLink]="['/patients', p.id]"
+                type="button"
+                class="btn btn-info"
+              >
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- table -->

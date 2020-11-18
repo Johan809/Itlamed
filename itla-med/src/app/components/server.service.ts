@@ -11,8 +11,6 @@ export class ServerService {
     this.apiUrl = 'http://127.0.0.1:8000/';
   }
 
-  
-
   public async register(med: object): Promise<string> {
     let url = this.apiUrl + 'regMed';
     let xhttp = this.xhttp;
@@ -251,8 +249,13 @@ export class ServerService {
     return new Promise((res, rej) => {
       xhttp.get(url).subscribe(
         (data) => {
-          if (data['ok']) res(data['arg']);
-          else res(data['msg']);
+          if (data['ok']) {
+            let resObj = {
+              msg: data['msg'],
+              report: data['arg'],
+            };
+            res(resObj);
+          } else res(data['msg']);
         },
         (err) => console.error(err)
       );
