@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
 
 import { Error404Component } from './components/error404/error404.component';
 import { HomeComponent } from './components/home/home.component';
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'newPatient',
     component: NewPatientComponent,
+  },
+  {
+    path: 'editPatient/:id',
+    component: EditPatientComponent,
   },
   {
     path: '**',

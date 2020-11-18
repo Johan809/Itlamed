@@ -1,8 +1,7 @@
 .ocultar {
-    display: none;
-  }
-  
-  .mostrar {
-    display: block;
-  }
-  
+  display: none;
+}
+
+.mostrar {
+  display: block;
+}

@@ -11,9 +11,10 @@ import { PatientComponent } from './components/patient/patient.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NewPatientComponent } from './components/new-patient/new-patient.component';
+import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, Error404Component, PatientsComponent, PatientComponent, LoginComponent, RegisterComponent, NewPatientComponent],
+  declarations: [AppComponent, HomeComponent, Error404Component, PatientsComponent, PatientComponent, LoginComponent, RegisterComponent, NewPatientComponent, EditPatientComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
