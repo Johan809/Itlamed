@@ -1,22 +1,15 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ServerService } from '../server.service';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServerService } from '../../server.service';
 
 @Component({
-  selector: 'app-edit-patient',
-  templateUrl: './edit-patient.component.html',
-  styleUrls: ['./edit-patient.component.css'],
+  selector: 'app-new-patient',
+  templateUrl: './new-patient.component.html',
+  styleUrls: ['./new-patient.component.css'],
 })
-export class EditPatientComponent implements OnInit {
-  public patient: any;
+export class NewPatientComponent {
   public msg: string;
-  private id: number;
+  private newPat: object;
   private token: string;
   private photo: any;
   private stream: MediaStream;
@@ -36,21 +29,9 @@ export class EditPatientComponent implements OnInit {
   constructor(
     private router: Router,
     private render: Renderer2,
-    private server: ServerService,
-    private actRouter: ActivatedRoute
+    private server: ServerService
   ) {
-    this.patient = {};
     this.token = 'dac44abcc8064069b469bae8dd5796e9';
-  }
-
-  async ngOnInit(): Promise<void> {
-    this.actRouter.paramMap.subscribe(async (param) => {
-      if (!param.has('id')) this.router.navigateByUrl('/patients');
-      else {
-        this.id = +param.get('id');
-        this.patient = await this.server.getOnePatient(this.token, this.id);
-      }
-    });
   }
 
   public startCamera() {
@@ -101,9 +82,8 @@ export class EditPatientComponent implements OnInit {
     this.photo = canvas.toDataURL();
   }
 
-  public async editPat(
+  public async create(
     cedula: string,
-    actPhoto: any,
     photoInput: HTMLInputElement,
     name: string,
     lastn: string,
@@ -135,8 +115,8 @@ export class EditPatientComponent implements OnInit {
       if (photoInput.files[0] !== undefined) {
         let pic = photoInput.files[0];
         this.photo = await this.getBlobImage(pic);
-      } else if (!this.photo) this.photo = actPhoto;
-      let editedPat = {
+      }
+      this.newPat = {
         id_card: cedula,
         photo: this.photo,
         name: name,
@@ -147,7 +127,7 @@ export class EditPatientComponent implements OnInit {
         b_date: date,
         allergies: allergies,
       };
-      let msg = await this.server.updatePatient(editedPat, this.token, this.id);
+      let msg = await this.server.regPatient(this.newPat, this.token);
       alert(msg);
       this.router.navigateByUrl('/patients');
     }

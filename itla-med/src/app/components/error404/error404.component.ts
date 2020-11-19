@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-error404',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./error404.component.css'],
 })
 export class Error404Component {
-  constructor() {}
+  constructor(private loc: Location) {}
+
+  public goBack() {
+    this.loc.back();
+  }
 }

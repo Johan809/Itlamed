@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ServerService } from '../server.service';
+import { ServerService } from '../../server.service';
 
 @Component({
   selector: 'app-date-report',

@@ -1,0 +1,61 @@
+<h2 class="text-center">Tablero Médico</h2>
+<hr />
+<br />
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card card-space border-success">
+      <div class="card-header">Utilidades</div>
+      <div class="card-body">
+        <h5 class="card-title">Pacientes</h5>
+        <p class="card-text">
+          En esta seccion podrás llevar control de todos tus pacientes,
+          registrarlos, editar su informacion en caso de ser necesario, y más.
+        </p>
+        <a routerLink="/patients" class="btn btn-success">Tus Pacientes</a>
+      </div>
+    </div>
+
+    <div class="card card-space border-secondary">
+      <div class="card-header">Utilidades</div>
+      <div class="card-body">
+        <h5 class="card-title">Consultas</h5>
+        <p class="card-text">
+          Espacio donde podrás gestionar a gusto toda la informacion acerca de
+          tus consultas.
+        </p>
+        <a routerLink="/consults" class="btn btn-secondary"
+          >Consultas Realizadas</a
+        >
+      </div>
+    </div>
+
+    <div class="card card-space border-info">
+      <div class="card-header">Información</div>
+      <div class="card-body">
+        <h5 class="card-title">Reportes</h5>
+        <p class="card-text">
+          Reportes con informacion útil acerca de tus pacientes; <br />
+          3 tipos de reportes:
+        </p>
+        <ul>
+          <li>Por Fecha de Consulta</li>
+          <li>Por Signo Zodiacal</li>
+          <li>Por Cantidad de consultas</li>
+        </ul>
+        <div class="btn-group" role="group">
+          <button routerLink="/reports/date" type="button" class="btn btn-info">
+            <i class="far fa-calendar-alt"></i>
+          </button>
+          <button routerLink="/reports/zod" type="button" class="btn btn-info">
+            <i class="fas fa-star"></i>
+          </button>
+          <button routerLink="/reports/cant" type="button" class="btn btn-info">
+            <i class="fas fa-hashtag"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
