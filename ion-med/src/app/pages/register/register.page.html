@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="margin-top: 3%">
+        <ion-card color="light">
+          <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">Registrate</h4>
+            <div id="error" class="alert alert-danger ocultar" role="alert">
+              {{ msg }}
+            </div>
+            <form>
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Nombre Usuario</ion-label>
+                <ion-input #name type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Correo Electronico</ion-label>
+                <ion-input #email type="email" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input #pass type="password" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Confirmar Contraseña</ion-label>
+                <ion-input #pass2 type="password" required></ion-input>
+              </ion-item>
+
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    (click)="register(name.value, email.value, pass.value, pass2.value)"
+                    type="submit"
+                    color="success"
+                    expand="block"
+                    >Registrarse</ion-button
+                  >
+                  <ion-text color="dark">
+                    <p class="text-center">
+                      ¿Ya tienes una cuenta?
+                      <ion-button
+                        type="submit"
+                        color="secondary"
+                        expand="block"
+                        routerLink="/login"
+                        >Inicia sesion</ion-button
+                      >
+                    </p>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+            </form>
+          </article>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

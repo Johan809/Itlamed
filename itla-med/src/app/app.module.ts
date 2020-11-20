@@ -17,6 +17,10 @@ import { DateReportComponent } from './components/Reports-Components/date-report
 import { ZodReportComponent } from './components/Reports-Components/zod-report/zod-report.component';
 import { CantReportComponent } from './components/Reports-Components/cant-report/cant-report.component';
 import { LobbyComponent } from './components/lobby/lobby.component';
+import { ConsultsComponent } from './components/Consults-Components/consults/consults.component';
+import { ConsultComponent } from './components/Consults-Components/consult/consult.component';
+import { NewConsultComponent } from './components/Consults-Components/new-consult/new-consult.component';
+import { EditConsultComponent } from './components/Consults-Components/edit-consult/edit-consult.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { LobbyComponent } from './components/lobby/lobby.component';
     ZodReportComponent,
     CantReportComponent,
     LobbyComponent,
+    ConsultsComponent,
+    ConsultComponent,
+    NewConsultComponent,
+    EditConsultComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

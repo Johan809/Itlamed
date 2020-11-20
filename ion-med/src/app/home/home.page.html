@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> ITLA Med </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll="true">
+  <div id="container">
+    <ion-img
+      [src]="logo"
+      style="width: 50%"
+      class="rounded mx-auto d-block"
+      id="img"
+    ></ion-img>
+    <div class="jumbotron bg-white">
+      <h1 class="display-4 font-italic">Itla Med</h1>
+      <ion-text>
+        <p class="lead my-3 font-weight-bold">{{ des }}</p>
+      </ion-text>
+      <br />
+      <ion-button routerLink="/login" expand="block" color="secondary">
+        <ion-icon slot="start" name="log-in-outline"></ion-icon>
+        Iniciar Sesion
+      </ion-button>
+      <ion-button routerLink="/register" expand="block" color="success">
+        <ion-icon slot="start" name="person-add-outline"></ion-icon>
+        Registrarse
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
