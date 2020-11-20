@@ -11,21 +11,29 @@ import { ServerService } from '../server.service';
 export class RegisterComponent implements OnInit {
   constructor(private servi: ServerService, private router: Router) {}
 
-  public user: Doctor = {
-    name: '',
-    email: '',
-    password: '',
-  };
+    user:Doctor = {
+    name: "",
+    email: "",
+    password:""
+  }
 
-  public async registrar(name, email, clave) {
-    (this.user.name = name),
-      (this.user.email = email),
-      (this.user.password = clave);
+  public async register(name:string, email:string, password:string) {
 
     if (this.user.name === null || this.user.name === '') {
-      alert('Este campo es obligatorio');
-    } else {
-      this.servi.register(this.user);
+    }
+    else if(this.user.email === null || this.user.email){
+    }
+    else if(this.user.password=== null || this.user.password){
+    }
+    else {
+      let newD = {
+        name: this.user.name,
+        email:this.user.email,
+        password:this.user.password
+      };
+      let msj  = await this.servi.register(newD);
+      alert(msj);
+      console.log(msj)
     }
   }
 
