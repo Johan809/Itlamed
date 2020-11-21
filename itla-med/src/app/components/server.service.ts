@@ -8,7 +8,7 @@ export class ServerService {
   private apiUrl: string;
 
   constructor(private xhttp: HttpClient) {
-    this.apiUrl = 'http://127.0.0.1:8000/';
+    this.apiUrl = 'https://api-itlamed.herokuapp.com/';
   }
 
   public async register(med: object): Promise<string> {

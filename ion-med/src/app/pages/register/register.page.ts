@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
-import { ServerService } from '../server.service';
+import { ServerService } from "../server.service";
 
 @Component({
   selector: "app-register",
@@ -10,10 +10,14 @@ import { ServerService } from '../server.service';
 })
 export class RegisterPage {
   public msg: string;
-  
-  constructor(private alertCtrl:AlertController, private router: Router, private server: ServerService) {}
 
-  public async register(name: string, email: string, password: string, pass2: string){
+  constructor(
+    private alertCtrl: AlertController,
+    private router: Router,
+    private server: ServerService
+  ) {}
+
+  public async register(name: any, email: any, password: any, pass2: any) {
     if (name === null || name === "") {
       this.validate("Debe llenar el nombre");
     } else if (email === null || email === "") {
@@ -26,8 +30,8 @@ export class RegisterPage {
       let newDr = {
         name: name,
         email: email,
-        password: password
-      };  
+        password: password,
+      };
       let msg = await this.server.register(newDr);
       console.log(msg);
       const alertElment = await this.alertCtrl.create({
