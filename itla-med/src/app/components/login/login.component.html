@@ -1,1 +1,30 @@
-<p>login works!</p>
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
+                <div class="card_login">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form #formLogin="ngForm" (ngSubmit)="ngOnInit()">
+                                <h1 class="h3 mb-3 font-weight-normal">Inicio Sesión</h1>
+
+                                <div>
+                                    <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Correo" required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="password" id="password" [(ngModel)]="user.password" name="password" placeholder="Contraseña" class="form-control" required>
+                                </div>
+                                <button type="submit" (click)="login(user.email,user.password)" class="btn btn-lg btn-primary btn-block">login</button>
+                                <br>
+                                <div class="form-group">
+                                    <a routerLink="/register">No tienes una cuenta?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
