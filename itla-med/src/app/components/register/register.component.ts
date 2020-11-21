@@ -9,31 +9,29 @@ import { ServerService } from '../server.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private servi: ServerService, private router: Router) {}
+  public msg: string;
+  
+  constructor(private router: Router, private server: ServerService) {}
 
-    user:Doctor = {
-    name: "",
-    email: "",
-    password:""
-  }
-
-  public async register(name:string, email:string, password:string) {
-
-    if (this.user.name === null || this.user.name === '') {
-    }
-    else if(this.user.email === null || this.user.email){
-    }
-    else if(this.user.password=== null || this.user.password){
-    }
-    else {
-      let newD = {
-        name: this.user.name,
-        email:this.user.email,
-        password:this.user.password
-      };
-      let msj  = await this.servi.register(newD);
-      alert(msj);
-      console.log(msj)
+  public async register(name: string, email: string, password: string, passTwo: string){
+    if (name === null || name === "") {
+      alert("Debe llenar el nombre");
+    } else if (email === null || email === "") {
+      alert("Debe llenar el correo electronico");
+    } else if (password === null || password === "") {
+      alert("Debe especificar una contraseña");
+    } else if (password != passTwo) {
+      alert("Las contraseñas no coinciden");
+    } else {
+      let newDr = {
+        name: name,
+        email: email,
+        password: password
+      };  
+      let msg = await this.server.register(newDr);
+      alert(msg);
+      
+      this.router.navigateByUrl("/login");
     }
   }
 
