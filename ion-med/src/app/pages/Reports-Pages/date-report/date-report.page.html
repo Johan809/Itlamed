@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lobby"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    <h1 class="text-center">Pacientes por fecha</h1>
+  </ion-text>
+
+  <ion-item>
+    <ion-datetime
+      #_date
+      done-text="Hecho"
+      cancel-text="Cancelar"
+      displayFormat="DD-MM-YYYY"
+      placeholder="Fecha"
+    ></ion-datetime>
+    <ion-button
+      (click)="giveReport(_date.value)"
+      color="tertiary"
+      expand="block"
+      fill="solid"
+      shape="round"
+      slot="end"
+    >
+      Buscar
+    </ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label slot="start">{{ msg }}</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let p of report">
+      <ion-card>
+        <ion-item>
+          <ion-label>{{p.name}} {{p.lastname}} </ion-label>
+          <ion-button
+            [routerLink]="['/patients', p.id]"
+            fill="outline"
+            color="primary"
+            slot="end"
+          >
+            <ion-icon name="information-circle"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Número de Seguro: {{p.n_ins}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Motivo de Consulta: {{p.motive}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Diagnóstico: {{p.diag}} </ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
