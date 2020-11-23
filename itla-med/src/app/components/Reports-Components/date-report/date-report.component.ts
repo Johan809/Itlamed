@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../../server.service';
 
 @Component({
@@ -6,15 +6,18 @@ import { ServerService } from '../../server.service';
   templateUrl: './date-report.component.html',
   styleUrls: ['./date-report.component.scss'],
 })
-export class DateReportComponent {
+export class DateReportComponent implements OnInit {
   public report: any;
   public msg: string;
   public date: string;
   private token: string;
 
   constructor(private server: ServerService) {
-    this.token = 'dac44abcc8064069b469bae8dd5796e9';
     this.date = '';
+  }
+
+  async ngOnInit() {
+    this.token = await this.server.getToken();
   }
 
   public async giveReport(date: string) {

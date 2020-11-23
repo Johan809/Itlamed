@@ -11,11 +11,10 @@ export class CantReportComponent implements OnInit {
   public msg: string;
   private token: string;
 
-  constructor(private server: ServerService) {
-    this.token = 'dac44abcc8064069b469bae8dd5796e9';
-  }
+  constructor(private server: ServerService) {}
 
   async ngOnInit(): Promise<void> {
+    this.token = await this.server.getToken();
     this.report = await this.server.VisitsReport(this.token);
     this.msg = 'Numero de Consultas';
   }

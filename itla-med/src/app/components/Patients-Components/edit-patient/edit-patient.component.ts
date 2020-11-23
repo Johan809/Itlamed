@@ -40,10 +40,10 @@ export class EditPatientComponent implements OnInit {
     private actRouter: ActivatedRoute
   ) {
     this.patient = {};
-    this.token = 'dac44abcc8064069b469bae8dd5796e9';
   }
 
   async ngOnInit(): Promise<void> {
+    this.token = await this.server.getToken();
     this.actRouter.paramMap.subscribe(async (param) => {
       if (!param.has('id')) this.router.navigateByUrl('/patients');
       else {

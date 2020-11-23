@@ -1,1 +1,51 @@
-<p>consults works!</p>
+<div class="contenedor">
+  <button class="btn btn-primary" routerLink="/newConsult">
+    Agregar Nueva
+  </button>
+</div>
+<div class="row">
+  <div *ngFor="let c of consults">
+    <div class="col-md-4">
+      <div class="card card-margin" style="width: 18rem">
+        <div class="card-body">
+          <div class="img">
+            <img class="img-fluid rounded-circle" [src]="c.photo" />
+          </div>
+          <h5 class="card-title">
+            {{ c.pat.__data__.name }} {{ c.pat.__data__.lastname }}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Fecha Consulta: {{ c.date }}
+          </h6>
+          <p class="card-text">
+            <strong>Motivo:</strong> {{ c.motive }} <br />
+            <strong>Diagnóstico:</strong> {{ c.diag }} <br />
+          </p>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              [routerLink]="['/consults', c.id]"
+              type="button"
+              class="btn btn-info"
+            >
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button
+              [routerLink]="['/editConsult', c.id]"
+              type="button"
+              class="btn btn-success"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              (click)="delConsult(c.id)"
+              type="button"
+              class="btn text-white btn-danger"
+            >
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

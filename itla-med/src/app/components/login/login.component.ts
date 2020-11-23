@@ -1,47 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserInfo } from 'os';
-import { promise, logging } from 'protractor';
 import { ServerService } from '../server.service';
-import { Doctor } from '../../models/doctor.model';
-import { Consult } from '../../models/consult.model';
-import { LobbyComponent } from '../lobby/lobby.component';
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  public msg: string;
+  private Dr: object;
 
+  constructor(private server: ServerService, private router: Router) {}
 
-  constructor(private servi: ServerService,
-    private router: Router) { }
-
-  public user: Doctor = {
-    email: '',
-    password: '',
-    name: '',
-  };
-
-  public async login(email:string,clave:string)
-
-  {
- 
-   if (this.user.email == 'raul' && this.user.password =='1234') {
-     alert('probando enrutamiento')
-   }
-   
-   else{
-     this.servi.login(this.user)
-   }
- 
+  public async login(email: string, password: string) {
+    if (email === null || email === '')
+      this.validate('Indique su Correo Electronico');
+    else if (password === null || password === '')
+      this.validate('Debe especificar su contraseña');
+    else {
+      this.Dr = {
+        email: email,
+        password: password,
+      };
+      let response = await this.server.login(this.Dr);
+      if (response) {
+        this.server.saveToken(response['token']);
+        alert(response['msg']);
+        this.router.navigateByUrl('/lobby');
+      }
+    }
   }
 
-  ngOnInit(): void {
-
-    this.login
-  } 
-
+  private validate(msg: string) {
+    this.msg = msg;
+    document.getElementById('error').classList.add('mostrar');
+  }
 }

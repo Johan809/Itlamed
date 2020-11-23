@@ -11,6 +11,19 @@ export class ServerService {
     this.apiUrl = 'https://api-itlamed.herokuapp.com/';
   }
 
+  public saveToken(token: string) {
+    var datos = JSON.stringify(token);
+    localStorage.setItem('ses_token', datos);
+  }
+
+  public async getToken(): Promise<string> {
+    return new Promise((res, rej) => {
+      var data = localStorage.getItem('ses_token');
+      let token = JSON.parse(data);
+      res(token);
+    });
+  }
+
   public async register(med: object): Promise<string> {
     let url = this.apiUrl + 'regMed';
     let xhttp = this.xhttp;

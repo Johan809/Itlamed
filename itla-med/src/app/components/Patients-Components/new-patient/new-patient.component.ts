@@ -1,4 +1,10 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerService } from '../../server.service';
 
@@ -7,7 +13,7 @@ import { ServerService } from '../../server.service';
   templateUrl: './new-patient.component.html',
   styleUrls: ['./new-patient.component.css'],
 })
-export class NewPatientComponent {
+export class NewPatientComponent implements OnInit {
   public msg: string;
   private newPat: object;
   private token: string;
@@ -30,8 +36,10 @@ export class NewPatientComponent {
     private router: Router,
     private render: Renderer2,
     private server: ServerService
-  ) {
-    this.token = 'dac44abcc8064069b469bae8dd5796e9';
+  ) {}
+
+  async ngOnInit() {
+    this.token = await this.server.getToken();
   }
 
   public startCamera() {
