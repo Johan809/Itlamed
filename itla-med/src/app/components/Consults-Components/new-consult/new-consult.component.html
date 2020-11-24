@@ -1,1 +1,40 @@
-<p>new-consult works!</p>
+<section id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
+                <div class="card_register">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form>
+                                <h1 class="h3 mb-3 font-weight-normal">Agregar Consulta</h1>
+                                <div class="form-group">
+                                    <input type="text" #paciente placeholder="Paciente" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" #fecha class="form-control" placeholder="Fecha" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" #motivo placeholder="Motivo" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" #seguro placeholder="#de seguro" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" #monto placeholder="Monto pagado" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" #diagnostico placeholder="Diagnóstico" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" #comentario placeholder="Comentario" class="form-control" required>
+                                </div>
+                                <button type="submit" (click)="create(paciente.value,fecha.value,motivo.value,seguro.value,monto.value,diagnostico.value,comentario.value)" class="btn btn-lg btn-primary btn-block">Guardar Consulta</button>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
