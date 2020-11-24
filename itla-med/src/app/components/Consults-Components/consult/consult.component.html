@@ -1,1 +1,82 @@
-<p>consult works!</p>
+<link
+  href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div
+      class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad"
+    >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Consulta #{{ consult.id }} {{ consult.pat.__data__.name }}
+            {{ consult.pat.__data__.lastname }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 text-center">
+              <img
+                alt="User Pic"
+                [src]="consult.photo"
+                class="img-circle img-responsive"
+              />
+            </div>
+            <div class="col-md-9 col-lg-9">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Número de Seguro:</td>
+                    <td>{{ consult.n_ins }}</td>
+                  </tr>
+                  <tr>
+                    <td>Cédula del Paciente:</td>
+                    <td>
+                      <p>{{ consult.pat.__data__.id_card }}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fecha de la Consulta:</td>
+                    <td>{{ consult.date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Motivo:</td>
+                    <td>{{ consult.motive }}</td>
+                  </tr>
+                  <tr>
+                    <td>Diagnostico:</td>
+                    <td>{{ consult.diag }}</td>
+                  </tr>
+                  <tr>
+                    <td>Nota:</td>
+                    <td>{{ consult.note }}</td>
+                  </tr>
+                  <tr>
+                    <td>Pago por la consulta:</td>
+                    <td>{{ consult.p_amount }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="float-right">
+                <button
+                  [routerLink]="['/editConsult', consult.id]"
+                  class="btn btn-success"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button (click)="delConsult(consult.id)" class="btn btn-danger">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
