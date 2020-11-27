@@ -56,19 +56,26 @@ const routes: Routes = [
       import("./pages/Consults-Pages/new-consult/new-consult.module").then(
         (m) => m.NewConsultPageModule
       ),
-  } /* 
-  {
-    path: "consult/:id",
-    loadChildren: () =>
-      import("./pages/Consults-Pages/consult/consult.module").then(
-        (m) => m.ConsultPageModule
-      ),
-  }, */,
+  },
   {
     path: "consults",
     loadChildren: () =>
       import("./pages/Consults-Pages/consults/consults.module").then(
         (m) => m.ConsultsPageModule
+      ),
+  },
+  {
+    path: "patients/new",
+    loadChildren: () =>
+      import("./pages/Patients-Pages/new-patient/new-patient.module").then(
+        (m) => m.NewPatientPageModule
+      ),
+  },
+  {
+    path: "patients",
+    loadChildren: () =>
+      import("./pages/Patients-Pages/patients/patients.module").then(
+        (m) => m.PatientsPageModule
       ),
   },
 ];

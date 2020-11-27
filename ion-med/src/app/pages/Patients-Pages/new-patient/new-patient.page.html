@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lobby"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Paciente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="margin-top: 3%">
+        <ion-card color="light">
+          <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">Datos del Paciente</h4>
+            <div id="error" class="alert alert-danger ocultar" role="alert">
+              {{ msg }}
+            </div>
+            <form>
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Cedula</ion-label>
+                <ion-input #ced type="text" required></ion-input>
+              </ion-item>
+
+              <ion-button expand="block" color="light">
+                <ion-icon lazy="true" slot="start" name="image"></ion-icon>
+                <ion-label slot="end"></ion-label>
+                <input
+                  type="file"
+                  (change)="loadImageFromDevice($event)"
+                  id="file-input"
+                  accept="image/png, image/jpeg"
+                />
+              </ion-button>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input #name type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Apellido</ion-label>
+                <ion-input #lastn type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label>Tipo Sangre</ion-label>
+                <ion-select #blood placeholder="Elige">
+                  <ion-select-option value="AB+">AB+</ion-select-option>
+                  <ion-select-option value="AB-">AB-</ion-select-option>
+                  <ion-select-option value="A+">A+</ion-select-option>
+                  <ion-select-option value="A-">A-</ion-select-option>
+                  <ion-select-option value="B+">B+</ion-select-option>
+                  <ion-select-option value="B-">B-</ion-select-option>
+                  <ion-select-option value="O+">O+</ion-select-option>
+                  <ion-select-option value="O-">O-</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Correo Electronico</ion-label>
+                <ion-input #email type="email" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label>Genero</ion-label>
+                <ion-select #gender placeholder="Elige">
+                  <ion-select-option value="M">Masculino</ion-select-option>
+                  <ion-select-option value="F">Femenino</ion-select-option>
+                  <ion-select-option value="O">Queer</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="fixed">Fecha Nacimiento</ion-label>
+                <ion-datetime
+                  lines="full"
+                  color="light"
+                  #_date
+                  done-text="Hecho"
+                  cancel-text="Cancelar"
+                  displayFormat="DD-MM-YYYY"
+                ></ion-datetime>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">alergias</ion-label>
+                <ion-input #aller type="text" required></ion-input>
+              </ion-item>
+
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    (click)="newPat(ced.value, name.value, lastn.value, blood.value, email.value, gender.value, _date.value, aller.value)"
+                    type="submit"
+                    color="success"
+                    expand="block"
+                    >Guardar</ion-button
+                  >
+                </ion-col>
+              </ion-row>
+            </form>
+          </article>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

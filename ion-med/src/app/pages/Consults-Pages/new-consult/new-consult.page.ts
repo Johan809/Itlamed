@@ -62,7 +62,7 @@ export class NewConsultPage implements OnInit {
       };
       let msg = await this.server.regConsult(this.newConsult, this.token);
       const alertElment = await this.alertCtrl.create({
-        header: "Resultado del Procese",
+        header: "Resultado del Proceso",
         message: msg,
         buttons: [
           {
