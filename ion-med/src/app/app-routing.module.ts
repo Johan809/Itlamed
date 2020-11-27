@@ -50,6 +50,27 @@ const routes: Routes = [
         (m) => m.CantReportPageModule
       ),
   },
+  {
+    path: "consults/new",
+    loadChildren: () =>
+      import("./pages/Consults-Pages/new-consult/new-consult.module").then(
+        (m) => m.NewConsultPageModule
+      ),
+  } /* 
+  {
+    path: "consult/:id",
+    loadChildren: () =>
+      import("./pages/Consults-Pages/consult/consult.module").then(
+        (m) => m.ConsultPageModule
+      ),
+  }, */,
+  {
+    path: "consults",
+    loadChildren: () =>
+      import("./pages/Consults-Pages/consults/consults.module").then(
+        (m) => m.ConsultsPageModule
+      ),
+  },
 ];
 
 @NgModule({

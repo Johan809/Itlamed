@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lobby"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="recharge($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let c of consults">
+      <ion-card>
+        <ion-card-header>
+          <ion-item>
+            <ion-card-subtitle> Fecha: {{c.date}} </ion-card-subtitle>
+            <ion-button
+              (click)="showInfo(c.id)"
+              color="secondary"
+              fill="outline"
+              slot="end"
+            >
+              <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-card-title>
+            {{ c.pat.__data__.name }} {{ c.pat.__data__.lastname}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Diagnostico: {{ c.diag }}
+          <ion-item>
+            <ion-text color="medium">
+              <p>Motivo: {{ c.motive }}</p>
+              <p>Nota: {{ c.note }}</p>
+            </ion-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" routerLink="/consults/new" type="button">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

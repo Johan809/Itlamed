@@ -7,9 +7,11 @@ import { IonicStorageModule } from "@ionic/storage";
 import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { Camera } from "@ionic-native/camera/ngx";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { ConsultPageModule } from "./pages/Consults-Pages/consult/consult.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,11 +22,13 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    ConsultPageModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Camera,
   ],
   bootstrap: [AppComponent],
 })

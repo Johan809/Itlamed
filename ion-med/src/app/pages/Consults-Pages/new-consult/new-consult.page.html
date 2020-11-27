@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/lobby"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Consulta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="margin-top: 3%">
+        <ion-card color="light">
+          <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">
+              Datos de la Consulta
+            </h4>
+            <div id="error" class="alert alert-danger ocultar" role="alert">
+              {{ msg }}
+            </div>
+            <form>
+              <ion-item lines="full" color="light">
+                <ion-label>Paciente</ion-label>
+                <ion-select #pat okText="Seleccionar" cancelText="Cancelar">
+                  <ion-select-option *ngFor="let p of patients" [value]="p.id">
+                    {{p.name}} {{p.lastn}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="fixed">Fecha de Consulta</ion-label>
+                <ion-datetime
+                  lines="full"
+                  color="light"
+                  #_date
+                  done-text="Hecho"
+                  cancel-text="Cancelar"
+                  displayFormat="DD-MM-YYYY"
+                ></ion-datetime>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Motivo</ion-label>
+                <ion-input #motive type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Seguro</ion-label>
+                <ion-input #n_ins type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Monto Pagado</ion-label>
+                <ion-input #paid type="number" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Diagnostico</ion-label>
+                <ion-input #diag type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item lines="full" color="light">
+                <ion-label position="floating">Notas de Consulta</ion-label>
+                <ion-input #note type="text" required></ion-input>
+              </ion-item>
+
+              <ion-button expand="block" color="light">
+                <ion-icon lazy="true" slot="start" name="image"></ion-icon>
+                <ion-label slot="end"></ion-label>
+                <input
+                  type="file"
+                  (change)="loadImageFromDevice($event)"
+                  id="file-input"
+                  accept="image/png, image/jpeg"
+                />
+              </ion-button>
+
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    (click)="create(pat.value, _date.value, motive.value, n_ins.value, paid.value, diag.value, note.value)"
+                    type="submit"
+                    color="success"
+                    expand="block"
+                    >Guardar</ion-button
+                  >
+                </ion-col>
+              </ion-row>
+            </form>
+          </article>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

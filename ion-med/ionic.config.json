@@ -1,7 +1,8 @@
 {
-  "name": "ion-med",
+  "name": "ITLA Med",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
