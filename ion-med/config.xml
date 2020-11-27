@@ -6,8 +6,8 @@
 	<description>
 		ITLA Med para Android con Ionic
 	</description>
-	<author email="hi@ionicframework.com" href="http://ionicframework.com/">
-		Ionic Framework Team
+	<author email="20186764@itla.edu.do" href="https://github.com/Johan809">
+		Johan Alonzo
 	</author>
 	<content src="index.html" />
 	<access origin="*" />

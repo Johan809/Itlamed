@@ -36,7 +36,7 @@ export class PatientPage implements OnInit {
         {
           text: "Eliminar",
           handler: async () => {
-            await this.server.deleteConsult(this.token, this.pat["id"]);
+            await this.server.deletePatient(this.token, this.pat["id"]);
             this.modal.dismiss();
           },
         },
