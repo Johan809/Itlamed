@@ -29,12 +29,12 @@ export class EditConsultComponent implements OnInit {
       else {
         this.id = +param.get('id');
         this.consult = await this.server.getOneConsult(this.token, this.id);
+        console.log(this.consult);
       }
     });
   }
 
   public async editCons(
-    paciente: string,
     fecha: string,
     motivo: string,
     seguro: string,
@@ -44,9 +44,7 @@ export class EditConsultComponent implements OnInit {
     actPhoto: any,
     photoInput: HTMLInputElement
   ) {
-    if (paciente === null || paciente === '') {
-      this.validate('Debe llenar el campo paciente');
-    } else if (fecha === null || fecha === '') {
+    if (fecha === null || fecha === '') {
       this.validate('Debe llenar el campo fecha');
     } else if (motivo === null || motivo === '') {
       this.validate('Debe llenar el campo seguro');
@@ -65,7 +63,7 @@ export class EditConsultComponent implements OnInit {
       } else if (!this.photo) this.photo = actPhoto;
 
       let editCons = {
-        p_id: paciente,
+        p_id: 0, //el paciente no cambia
         date: fecha,
         motive: motivo,
         n_ins: seguro,

@@ -1,67 +1,4 @@
 <section id="register">
-<<<<<<< HEAD
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
-                <div class="card_register">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <form>
-                                <h1 class="h3 mb-3 font-weight-normal">Agregar Consulta</h1>
-                                <div id="error" class="alert alert-danger ocultar" role="alert">
-                                    {{ msg }}
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" #paciente placeholder="Paciente" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="date" #fecha class="form-control" placeholder="Fecha" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" #motivo placeholder="Motivo" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" #seguro placeholder="#de seguro" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" #monto placeholder="Monto pagado" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" #diagnostico placeholder="Diagnóstico" class="form-control" required>
-                                </div>
-                                <label class="form-control text-left"> Comentario</label>
-                                <textarea #comentario type="text" class="form-group" placeholder="Comentaario" class="form-control" required>
-                                </textarea>
-                                <hr>
-                                <div class="form-group input-group">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input #photoInput type="file" class="custom-file-input" id="photoInput" aria-describedby="inputGroupFileAddon04" />
-                                            <label class="custom-file-label" for="photoInput">
-                                          <i class="far fa-image"></i> Foto Paciente
-                                        </label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#photoModal" type="button" id="inputGroupFileAddon04">
-                                          Tomar Foto
-                                        </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" (click)="startCamera()">
-                                      Iniciar webcam
-                                    </button>
-                                    <button class="btn btn-success" (click)="capture()">Tomar foto</button>
-                                    <button (click)="stopCamera()" type="button" class="btn btn-secondary" data-dismiss="modal">
-                                      Listo
-                                    </button>
-                                </div>
-                                <button type="submit" (click)="create(paciente.value,fecha.value,motivo.value,seguro.value,monto.value,diagnostico.value,comentario.value,photoInput.value)" class="btn btn-lg btn-primary btn-block">Guardar Consulta</button>
-                                <br>
-                            </form>
-                        </div>
-=======
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
@@ -77,12 +14,16 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="pat">Paciente</label>
-                  <select #paciente class="form-control" id="pat"></select>
-                  <option>Seleccione un Paciente</option>
-                  <option *ngFor="let p of pats" [ngValue]="p" [value]="p.id">
-                    {{ p.name }} {{ p.lastn }}
-                  </option>
+                  <select #paciente class="form-control" id="pat">
+                    <option>Seleccione un Paciente</option>
+                    <option
+                      *ngFor="let p of pats"
+                      [ngValue]="p"
+                      [value]="p['id']"
+                    >
+                      {{ p.name }} {{ p.lastn }}
+                    </option>
+                  </select>
                 </div>
 
                 <div class="form-group">
@@ -153,7 +94,6 @@
                       <label class="custom-file-label" for="photoInput">
                         <i class="far fa-image"></i> Foto Paciente
                       </label>
->>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
                     </div>
                   </div>
                 </div>
