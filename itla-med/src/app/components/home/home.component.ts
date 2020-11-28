@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     this.token = await this.server.getToken();
-    console.log(this.token);
     if (this.token !== '' || this.token !== null || this.token !== undefined) {
       await this.server.logout(this.token);
       this.token = null;
