@@ -1,4 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerService } from '../../server.service';
 
@@ -11,19 +18,78 @@ export class NewConsultComponent implements OnInit {
   public msg: string;
   private newCon: object;
   private token: string;
+  private photo: any;
+  private stream: MediaStream;
+  private videoWidth: number = 0;
+  private videoHeight: number = 0;
+  private constraints: object = {
+    video: {
+      facingMode: 'environment',
+      width: { ideal: 350 },
+      height: { ideal: 350 },
+    },
+  };
 
-  
+  @ViewChild('video', { static: true }) videoElement: ElementRef;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
   constructor(
     private router: Router,
-    private server: ServerService
-  ) {
-    this.token = 'dac44abcc8064069b469bae8dd5796e9';
-  }
+    private server: ServerService,
+    private render: Renderer2
+  ) {}
 
   async ngOnInit() {
     this.token = await this.server.getToken();
   }
 
+
+  public startCamera() {
+    if (!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
+      navigator.mediaDevices
+        .getUserMedia(this.constraints)
+        .then((stream) => {
+          this.stream = stream;
+          this.attachVideo(this.stream);
+        })
+        .catch((err) => console.error(err));
+    } else {
+      alert('Lo sentimos, camara no disponible');
+    }
+  }
+
+  public stopCamera() {
+    this.stream.getTracks().forEach((track) => track.stop());
+  }
+
+  public capture() {
+    this.render.setProperty(
+      this.canvas.nativeElement,
+      'width',
+      this.videoWidth
+    );
+    this.render.setProperty(
+      this.canvas.nativeElement,
+      'height',
+      this.videoHeight
+    );
+    this.canvas.nativeElement
+      .getContext('2d')
+      .drawImage(this.videoElement.nativeElement, 0, 0);
+    let canvas = document.getElementsByTagName('canvas')[0];
+    this.photo = canvas.toDataURL();
+  }
+
+  private attachVideo(stream) {
+    this.render.setProperty(
+      this.videoElement.nativeElement,
+      'srcObject',
+      stream
+    );
+    this.render.listen(this.videoElement.nativeElement, 'play', (e) => {
+      this.videoHeight = this.videoElement.nativeElement.videoHeight;
+      this.videoWidth = this.videoElement.nativeElement.videoWidth;
+    });
+  }
 
 
   public async create(
@@ -33,7 +99,8 @@ export class NewConsultComponent implements OnInit {
     seguro: string,
     monto: string,
     diagnostico: string,
-    comentario:string
+    comentario:string,
+    photoInput: HTMLInputElement,
 
   ) {
     if (paciente === null || paciente === '') {
@@ -51,6 +118,10 @@ export class NewConsultComponent implements OnInit {
     } else if (comentario === null || comentario === '') {
       this.validate('Debe llenar el campo comentario');
     } else {
+      if (photoInput.files[0] !== undefined) {
+        let pic = photoInput.files[0];
+        this.photo = await this.getBlobImage(pic);
+      }
       this.newCon = {
         paciente: paciente,
         fecha:fecha,
@@ -58,12 +129,23 @@ export class NewConsultComponent implements OnInit {
         seguro:seguro,
         monto:monto,
         diagnostico:diagnostico,
-        comntario:comentario
+        comntario:comentario,
+        photo:this.photo
       };
       let msg = await this.server.regConsult(this.newCon, this.token);
       alert(msg);
       this.router.navigateByUrl('/consults');
     }
+  }
+
+  private async getBlobImage(image: any): Promise<any> {
+    const reader = new FileReader();
+    return new Promise((res, rej) => {
+      reader.onloadend = (e) => {
+        res(e.target.result);
+      };
+      if (image) reader.readAsDataURL(image);
+    });
   }
 
   private validate(msg: string) {
