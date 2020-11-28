@@ -212,9 +212,9 @@ def delete_patient(token: str, _id: int):
 @app.post('/regConsult/{token}')
 def create_consult(cons: ConsModel, token: str):
     try:
-        act_ses = Sesion.get(Sesion.token == token)
-        act_med = Doctor.select().join(Sesion).where(
-            Doctor._id == Sesion.user).get()
+        act_ses = Sesion.select().where(Sesion.token == token).get()
+        act_med = Doctor.select().where((Doctor.name == act_ses.user.name)
+                                        & (Doctor.email == act_ses.user.email)).get()
         _date = getDate(cons.date)
         newCons = Consultation(dr=act_med._id, patient=cons.p_id, date=_date, motive=cons.motive,
                                n_insurance=cons.n_ins, p_amount=cons.paid, diagnosis=cons.diag, note=cons.note, photo=cons.photo)
