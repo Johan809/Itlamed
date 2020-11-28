@@ -21,6 +21,7 @@ import { ConsultsComponent } from './components/Consults-Components/consults/con
 import { ConsultComponent } from './components/Consults-Components/consult/consult.component';
 import { NewConsultComponent } from './components/Consults-Components/new-consult/new-consult.component';
 import { EditConsultComponent } from './components/Consults-Components/edit-consult/edit-consult.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EditConsultComponent } from './components/Consults-Components/edit-cons
     ConsultComponent,
     NewConsultComponent,
     EditConsultComponent,
+    AboutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

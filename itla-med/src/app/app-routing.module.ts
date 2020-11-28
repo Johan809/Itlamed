@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LobbyComponent } from './components/lobby/lobby.component';
 import { Error404Component } from './components/error404/error404.component';
+import { AboutComponent } from './components/about/about.component';
 
 import { PatientComponent } from './components/Patients-Components/patient/patient.component';
 import { PatientsComponent } from './components/Patients-Components/patients/patients.component';
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'reports/cant',
     component: CantReportComponent,
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
   },
   {
     path: '**',
