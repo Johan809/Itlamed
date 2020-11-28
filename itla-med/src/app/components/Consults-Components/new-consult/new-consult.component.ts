@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import {
   Component,
@@ -6,19 +7,24 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
 import { Router } from '@angular/router';
 import { ServerService } from '../../server.service';
 
 @Component({
   selector: 'app-new-consult',
   templateUrl: './new-consult.component.html',
-  styleUrls: ['./new-consult.component.css']
+  styleUrls: ['./new-consult.component.css'],
 })
 export class NewConsultComponent implements OnInit {
   public msg: string;
+  public pats: object;
   private newCon: object;
   private token: string;
   private photo: any;
+<<<<<<< HEAD
   private stream: MediaStream;
   private videoWidth: number = 0;
   private videoHeight: number = 0;
@@ -37,11 +43,17 @@ export class NewConsultComponent implements OnInit {
     private server: ServerService,
     private render: Renderer2
   ) {}
+=======
+
+  constructor(private router: Router, private server: ServerService) {}
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
 
   async ngOnInit() {
     this.token = await this.server.getToken();
+    this.pats = await this.server.getAllPatients(this.token);
   }
 
+<<<<<<< HEAD
 
   public startCamera() {
     if (!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
@@ -92,6 +104,8 @@ export class NewConsultComponent implements OnInit {
   }
 
 
+=======
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
   public async create(
     paciente: string,
     fecha: string,
@@ -99,9 +113,14 @@ export class NewConsultComponent implements OnInit {
     seguro: string,
     monto: string,
     diagnostico: string,
+<<<<<<< HEAD
     comentario:string,
     photoInput: HTMLInputElement,
 
+=======
+    comentario: string,
+    photoInput: HTMLInputElement
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
   ) {
     if (paciente === null || paciente === '') {
       this.validate('Debe llenar el campo paciente');
@@ -123,6 +142,7 @@ export class NewConsultComponent implements OnInit {
         this.photo = await this.getBlobImage(pic);
       }
       this.newCon = {
+<<<<<<< HEAD
         paciente: paciente,
         fecha:fecha,
         motivo:motivo,
@@ -131,6 +151,16 @@ export class NewConsultComponent implements OnInit {
         diagnostico:diagnostico,
         comntario:comentario,
         photo:this.photo
+=======
+        p_id: paciente,
+        date: fecha,
+        motive: motivo,
+        n_ins: seguro,
+        paid: monto,
+        diag: diagnostico,
+        note: comentario,
+        photo: this.photo,
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
       };
       let msg = await this.server.regConsult(this.newCon, this.token);
       alert(msg);
@@ -152,5 +182,4 @@ export class NewConsultComponent implements OnInit {
     this.msg = msg;
     document.getElementById('error').classList.add('mostrar');
   }
-
 }

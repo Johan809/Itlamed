@@ -1,4 +1,5 @@
 <section id="register">
+<<<<<<< HEAD
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
@@ -60,9 +61,127 @@
                                 <br>
                             </form>
                         </div>
-                    </div>
+=======
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-ms-6 col-md-4 mx-auto">
+        <div class="card_register">
+          <div class="card">
+            <div class="card-body text-center">
+              <form>
+                <h1 class="h3 mb-3 font-weight-normal">Agregar Consulta</h1>
+
+                <!-- validation msgs -->
+                <div id="error" class="alert alert-danger ocultar" role="alert">
+                  {{ msg }}
                 </div>
+
+                <div class="form-group">
+                  <label for="pat">Paciente</label>
+                  <select #paciente class="form-control" id="pat"></select>
+                  <option>Seleccione un Paciente</option>
+                  <option *ngFor="let p of pats" [ngValue]="p" [value]="p.id">
+                    {{ p.name }} {{ p.lastn }}
+                  </option>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="date"
+                    #fecha
+                    class="form-control"
+                    placeholder="Fecha"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    #motivo
+                    placeholder="Motivo"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    #seguro
+                    placeholder="#de seguro"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    #monto
+                    placeholder="Monto pagado"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    #diagnostico
+                    placeholder="Diagnóstico"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    #comentario
+                    placeholder="Comentario"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group input-group">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input
+                        #photoInput
+                        type="file"
+                        class="custom-file-input"
+                        id="photoInput"
+                        aria-describedby="inputGroupFileAddon04"
+                      />
+                      <label class="custom-file-label" for="photoInput">
+                        <i class="far fa-image"></i> Foto Paciente
+                      </label>
+>>>>>>> 19d7f96fc87fa006e5e4d2ae87b014c3cda16488
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  (click)="
+                    create(
+                      paciente.value,
+                      fecha.value,
+                      motivo.value,
+                      seguro.value,
+                      monto.value,
+                      diagnostico.value,
+                      comentario.value,
+                      photoInput
+                    )
+                  "
+                  class="btn btn-lg btn-primary btn-block"
+                >
+                  Guardar Consulta
+                </button>
+                <br />
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
