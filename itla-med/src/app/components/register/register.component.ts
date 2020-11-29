@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
         name: name,
         email: email,
         password: password,
+        passtwo: passTwo
       };
       let msg = await this.server.register(newDr);
       alert(msg);
