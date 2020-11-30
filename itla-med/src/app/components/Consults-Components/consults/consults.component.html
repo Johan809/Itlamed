@@ -1,9 +1,12 @@
-<div class="contenedor">
-  <button class="btn btn-primary" routerLink="/newConsult">
-    Agregar Nueva
+<div class="float-right">
+  <button class="btn btn-success" routerLink="/newConsult">
+    <i class="fas fa-plus"></i> Agregar
   </button>
 </div>
-<div class="row">
+<h2 class="text-center">Consultas</h2>
+<hr />
+<br />
+<div class="row" style="margin-left: 5%">
   <div *ngFor="let c of consults">
     <div class="col-md-4">
       <div class="card card-margin" style="width: 18rem">

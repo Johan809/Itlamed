@@ -13,6 +13,7 @@ origins = [
     "http://localhost:4200",
     "http://localhost:8100",
     "http://localhost:4000",
+    "https://web-itlamed.herokuapp.com"
 ]
 app.add_middleware(
     CORSMiddleware,

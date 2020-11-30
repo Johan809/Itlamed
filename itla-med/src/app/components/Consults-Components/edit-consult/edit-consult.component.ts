@@ -29,7 +29,6 @@ export class EditConsultComponent implements OnInit {
       else {
         this.id = +param.get('id');
         this.consult = await this.server.getOneConsult(this.token, this.id);
-        console.log(this.consult);
       }
     });
   }
